@@ -8,4 +8,14 @@ export default defineConfig({
     sourcemap: process.env.NODE_ENV === 'development',
   },
   plugins: [uni()],
+  css: {
+    preprocessorOptions: {
+      sass: {
+        api: 'modern', // 使用 Sass 现代 API，避免 legacy-js-api 警告
+      },
+      scss: {
+        api: 'modern', // 同时配置 scss
+      },
+    },
+  },
 })

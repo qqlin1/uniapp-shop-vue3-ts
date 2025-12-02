@@ -1,0 +1,69 @@
+/* 热门推荐 */
+.hot {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 508rpx;
+  margin: 20rpx 20rpx 0;
+  border-radius: 10rpx;
+  background-color: #fff;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 254rpx;
+
+    /* 核心修复：加上这行，把边框算在50%宽度内，防止换行 */
+    box-sizing: border-box;
+
+    border-right: 1rpx solid #eee;
+    border-top: 1rpx solid #eee;
+
+    /* 处理边框逻辑：第2个和第4个（偶数个）去掉右边框 */
+    &:nth-child(2n) {
+      border-right: none;
+    }
+    /* 处理边框逻辑：前两个去掉上边框 */
+    &:nth-child(-n + 2) {
+      border-top: none;
+    }
+
+    /* 内部标题样式 - 移到 item 内部更安全 */
+    .title {
+      display: flex;
+      align-items: center;
+      padding: 24rpx 24rpx 0;
+      font-size: 32rpx;
+      color: #262626;
+      position: relative;
+
+      .title-text {
+        // 如果标题太长，可以加个省略号
+        max-width: 200rpx;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .title-desc {
+        font-size: 24rpx;
+        color: #7f7f7f;
+        margin-left: 18rpx;
+      }
+    }
+
+    /* 内部图片区域样式 */
+    .cards {
+      flex: 1;
+      padding: 15rpx 20rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .image {
+        width: 150rpx;
+        height: 150rpx;
+      }
+    }
+  }
+}
